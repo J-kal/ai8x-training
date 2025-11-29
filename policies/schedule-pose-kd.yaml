@@ -1,0 +1,21 @@
+# Learning Rate Schedule for Pose Estimation with Knowledge Distillation
+# Use with: --compress policies/schedule-pose-kd.yaml
+#
+# This schedule is designed for knowledge distillation training:
+# - Lower initial learning rate for stable KD training
+# - Gradual warmup in the first epochs
+# - Step decay at milestones
+---
+lr_schedulers:
+  training_lr:
+    class: MultiStepLR
+    milestones: [30, 60, 90, 120]
+    gamma: 0.5
+
+policies:
+  - lr_scheduler:
+      instance_name: training_lr
+    starting_epoch: 0
+    ending_epoch: 150
+    frequency: 1
+

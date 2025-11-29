@@ -1,0 +1,11 @@
+# Quantization-Aware Training (QAT) Policy for Pose Estimation
+#
+# This policy defines when to start QAT and what bit width to use.
+# QAT is essential for deployment on MAX78000/MAX78002.
+#
+# The start_epoch should be after the model has converged with
+# knowledge distillation to avoid instability.
+---
+start_epoch: 100
+weight_bits: 8
+

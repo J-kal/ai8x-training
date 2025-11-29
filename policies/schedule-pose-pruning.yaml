@@ -1,0 +1,51 @@
+# Post-Training Pruning Schedule for Pose Estimation
+#
+# This schedule applies structured pruning to reduce model size.
+# Run after QAT training is complete.
+#
+# Pruning strategy:
+# - Gradual pruning over epochs to maintain accuracy
+# - Target sparsity increases progressively
+# - Final sparsity of 50% for significant size reduction
+#
+# Use with: --compress policies/schedule-pose-pruning.yaml
+---
+version: 1
+
+lr_schedulers:
+  training_lr:
+    class: MultiStepLR
+    milestones: [10, 20, 30]
+    gamma: 0.5
+
+pruners:
+  filter_pruner:
+    class: AutomatedGradualPruner
+    initial_sparsity: 0.0
+    final_sparsity: 0.50
+    weights: [
+      conv1.op.weight, conv2.op.weight, conv3.op.weight,
+      conv4.op.weight, conv5.op.weight, conv6.op.weight,
+      cpm1.op.weight, cpm2.op.weight,
+      heatmap_conv1.op.weight, paf_conv1.op.weight
+    ]
+
+policies:
+  - lr_scheduler:
+      instance_name: training_lr
+    starting_epoch: 0
+    ending_epoch: 40
+    frequency: 1
+
+  - pruner:
+      instance_name: filter_pruner
+      args:
+        mini_batch_pruning_frequency: 16
+        discard_masks_at_minibatch_end: False
+        use_double_copies: True
+        mask_on_forward_only: False
+        mask_gradients: True
+    starting_epoch: 0
+    ending_epoch: 30
+    frequency: 1
+
