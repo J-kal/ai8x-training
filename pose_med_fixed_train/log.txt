@@ -1,0 +1,142 @@
+[17:50:17] === FAST POSE TRAINING ===
+[17:50:17] CPU Cores: 20, Compute threads: 16, Data workers: 8
+[17:50:17] Subset: 15000, Batch: 8, Save every: 100
+[17:50:22] Dataset: 15000 samples, 1875 batches per epoch
+[17:50:26] Student params: 659,136
+[17:50:26] Teacher loaded
+[17:50:30] Starting training from batch 0...
+[17:50:57] Batch 1/15000 | Loss: 1551.8496 | Student: 1578.1257 | Distill: 1540.5884 | Time: 26.9s | ETA: 112.2h
+[17:51:20] Batch 2/15000 | Loss: 1256.5398 | Student: 1274.1976 | Distill: 1248.9722 | Time: 22.7s | ETA: 94.4h
+[17:51:42] Batch 3/15000 | Loss: 945.8538 | Student: 956.8835 | Distill: 941.1268 | Time: 21.8s | ETA: 90.8h
+[17:52:04] Batch 4/15000 | Loss: 711.9592 | Student: 734.7545 | Distill: 702.1898 | Time: 21.8s | ETA: 91.0h
+[17:52:25] Batch 5/15000 | Loss: 538.3563 | Student: 560.8945 | Distill: 528.6971 | Time: 21.8s | ETA: 90.9h
+[17:52:47] Batch 6/15000 | Loss: 438.2487 | Student: 460.3427 | Distill: 428.7799 | Time: 21.8s | ETA: 90.6h
+[17:53:09] Batch 7/15000 | Loss: 345.3231 | Student: 362.1691 | Distill: 338.1034 | Time: 21.9s | ETA: 91.4h
+[17:53:31] Batch 8/15000 | Loss: 292.9388 | Student: 308.8668 | Distill: 286.1125 | Time: 21.5s | ETA: 89.4h
+[17:53:52] Batch 9/15000 | Loss: 265.6447 | Student: 283.0140 | Distill: 258.2008 | Time: 21.7s | ETA: 90.5h
+[17:54:15] Batch 10/15000 | Loss: 232.1467 | Student: 254.2561 | Distill: 222.6712 | Time: 22.2s | ETA: 92.3h
+[17:54:36] Batch 11/15000 | Loss: 209.3971 | Student: 225.7192 | Distill: 202.4019 | Time: 21.7s | ETA: 90.5h
+[17:54:58] Batch 12/15000 | Loss: 195.6445 | Student: 212.7598 | Distill: 188.3094 | Time: 21.8s | ETA: 90.6h
+[17:55:20] Batch 13/15000 | Loss: 184.4328 | Student: 210.6226 | Distill: 173.2086 | Time: 21.9s | ETA: 91.0h
+[17:55:42] Batch 14/15000 | Loss: 164.7678 | Student: 180.5168 | Distill: 158.0182 | Time: 21.8s | ETA: 90.8h
+[17:56:03] Batch 15/15000 | Loss: 152.1289 | Student: 170.0697 | Distill: 144.4400 | Time: 21.7s | ETA: 90.4h
+[17:56:25] Batch 16/15000 | Loss: 137.0092 | Student: 154.1517 | Distill: 129.6624 | Time: 21.9s | ETA: 91.0h
+[17:56:47] Batch 17/15000 | Loss: 128.9930 | Student: 150.5529 | Distill: 119.7531 | Time: 21.8s | ETA: 90.7h
+[17:57:09] Batch 18/15000 | Loss: 119.0205 | Student: 144.0803 | Distill: 108.2805 | Time: 21.7s | ETA: 90.3h
+[17:57:31] Batch 19/15000 | Loss: 110.5055 | Student: 123.8746 | Distill: 104.7759 | Time: 21.9s | ETA: 91.0h
+[17:57:53] Batch 20/15000 | Loss: 96.1557 | Student: 115.7727 | Distill: 87.7485 | Time: 21.9s | ETA: 91.1h
+[18:01:32] Batch 30/15000 | Loss: 876.4462 | Student: 933.7426 | Distill: 851.8906 | Time: 22.0s | ETA: 91.4h
+[18:05:12] Batch 40/15000 | Loss: 40.6447 | Student: 64.1209 | Distill: 30.5835 | Time: 22.0s | ETA: 91.4h
+[18:08:50] Batch 50/15000 | Loss: 28.0394 | Student: 52.2411 | Distill: 17.6672 | Time: 21.7s | ETA: 90.2h
+[18:12:28] Batch 60/15000 | Loss: 23.7570 | Student: 46.6578 | Distill: 13.9423 | Time: 21.8s | ETA: 90.5h
+[18:16:05] Batch 70/15000 | Loss: 24.1225 | Student: 47.2530 | Distill: 14.2094 | Time: 21.7s | ETA: 90.2h
+[18:19:45] Batch 80/15000 | Loss: 21.0555 | Student: 45.5109 | Distill: 10.5746 | Time: 22.0s | ETA: 91.1h
+[18:23:24] Batch 90/15000 | Loss: 19.9045 | Student: 42.5700 | Distill: 10.1907 | Time: 21.9s | ETA: 90.8h
+[18:27:02] Batch 100/15000 | Loss: 20.3749 | Student: 44.2809 | Distill: 10.1294 | Time: 21.7s | ETA: 90.0h
+[18:27:02]   *** Saved BEST at batch 100 ***
+[18:30:46] Batch 110/15000 | Loss: 20.6897 | Student: 46.2021 | Distill: 9.7558 | Time: 22.4s | ETA: 92.6h
+[18:34:21] Batch 120/15000 | Loss: 18.7450 | Student: 41.3856 | Distill: 9.0418 | Time: 21.6s | ETA: 89.1h
+[18:37:58] Batch 130/15000 | Loss: 21.3783 | Student: 48.9865 | Distill: 9.5463 | Time: 21.6s | ETA: 89.4h
+[18:41:36] Batch 140/15000 | Loss: 18.2588 | Student: 40.8133 | Distill: 8.5926 | Time: 21.8s | ETA: 89.9h
+[18:45:16] Batch 150/15000 | Loss: 17.3796 | Student: 42.2694 | Distill: 6.7126 | Time: 22.0s | ETA: 90.8h
+[18:48:53] Batch 160/15000 | Loss: 17.7322 | Student: 40.4108 | Distill: 8.0129 | Time: 21.7s | ETA: 89.6h
+[18:52:30] Batch 170/15000 | Loss: 18.3463 | Student: 42.5154 | Distill: 7.9881 | Time: 21.6s | ETA: 89.2h
+[18:56:06] Batch 180/15000 | Loss: 17.5619 | Student: 41.7155 | Distill: 7.2103 | Time: 21.6s | ETA: 88.9h
+[18:59:42] Batch 190/15000 | Loss: 17.9159 | Student: 42.7584 | Distill: 7.2691 | Time: 21.6s | ETA: 88.8h
+[19:06:48] Batch 200/15000 | Loss: 16.3152 | Student: 40.9913 | Distill: 5.7397 | Time: 42.7s | ETA: 175.3h
+[19:06:48]   *** Saved BEST at batch 200 ***
+[19:10:27] Batch 210/15000 | Loss: 16.1134 | Student: 40.2394 | Distill: 5.7737 | Time: 21.8s | ETA: 89.7h
+[19:14:04] Batch 220/15000 | Loss: 17.1843 | Student: 38.8996 | Distill: 7.8778 | Time: 21.7s | ETA: 89.3h
+[19:17:42] Batch 230/15000 | Loss: 17.3701 | Student: 40.3407 | Distill: 7.5255 | Time: 21.8s | ETA: 89.3h
+[19:21:21] Batch 240/15000 | Loss: 16.5479 | Student: 38.4870 | Distill: 7.1455 | Time: 21.9s | ETA: 89.8h
+[19:43:50] Batch 250/15000 | Loss: 18.0329 | Student: 44.7903 | Distill: 6.5655 | Time: 134.9s | ETA: 552.7h
+[19:48:56] Batch 260/15000 | Loss: 15.5268 | Student: 36.8232 | Distill: 6.3997 | Time: 30.7s | ETA: 125.5h
+[19:55:54] Batch 270/15000 | Loss: 17.3267 | Student: 40.9696 | Distill: 7.1941 | Time: 41.8s | ETA: 171.0h
+[20:02:09] Batch 280/15000 | Loss: 15.2135 | Student: 36.8681 | Distill: 5.9330 | Time: 37.4s | ETA: 153.0h
+[20:08:21] Batch 290/15000 | Loss: 16.2520 | Student: 39.4699 | Distill: 6.3014 | Time: 37.3s | ETA: 152.4h
+[20:15:07] Batch 300/15000 | Loss: 17.2769 | Student: 41.7110 | Distill: 6.8051 | Time: 40.6s | ETA: 165.7h
+[20:15:07]   Saved checkpoint at batch 300
+[20:21:13] Batch 310/15000 | Loss: 16.5368 | Student: 39.2418 | Distill: 6.8060 | Time: 36.5s | ETA: 149.1h
+[20:27:34] Batch 320/15000 | Loss: 15.9939 | Student: 39.4171 | Distill: 5.9554 | Time: 38.1s | ETA: 155.3h
+[20:33:49] Batch 330/15000 | Loss: 16.6906 | Student: 40.6450 | Distill: 6.4245 | Time: 37.5s | ETA: 152.8h
+[20:40:11] Batch 340/15000 | Loss: 14.7724 | Student: 36.3164 | Distill: 5.5392 | Time: 38.2s | ETA: 155.6h
+[20:46:45] Batch 350/15000 | Loss: 16.1250 | Student: 39.6206 | Distill: 6.0554 | Time: 39.4s | ETA: 160.3h
+[20:53:06] Batch 360/15000 | Loss: 16.1700 | Student: 40.1377 | Distill: 5.8982 | Time: 38.1s | ETA: 155.0h
+[20:59:23] Batch 370/15000 | Loss: 15.1423 | Student: 37.4379 | Distill: 5.5871 | Time: 37.7s | ETA: 153.4h
+[21:05:38] Batch 380/15000 | Loss: 16.1526 | Student: 40.2079 | Distill: 5.8432 | Time: 37.5s | ETA: 152.3h
+[21:12:11] Batch 390/15000 | Loss: 16.5780 | Student: 41.8441 | Distill: 5.7497 | Time: 39.3s | ETA: 159.3h
+[21:18:28] Batch 400/15000 | Loss: 16.7322 | Student: 41.8622 | Distill: 5.9622 | Time: 37.7s | ETA: 152.8h
+[21:18:28]   Saved checkpoint at batch 400
+[21:24:52] Batch 410/15000 | Loss: 15.1676 | Student: 37.1961 | Distill: 5.7269 | Time: 38.4s | ETA: 155.8h
+[21:31:13] Batch 420/15000 | Loss: 14.3404 | Student: 35.3567 | Distill: 5.3334 | Time: 38.1s | ETA: 154.3h
+[21:37:36] Batch 430/15000 | Loss: 14.4544 | Student: 37.0367 | Distill: 4.7763 | Time: 38.3s | ETA: 154.9h
+[21:43:50] Batch 440/15000 | Loss: 15.5040 | Student: 37.9955 | Distill: 5.8648 | Time: 37.4s | ETA: 151.3h
+[21:50:14] Batch 450/15000 | Loss: 16.4464 | Student: 42.0806 | Distill: 5.4603 | Time: 38.4s | ETA: 155.0h
+[21:56:34] Batch 460/15000 | Loss: 16.2451 | Student: 39.0048 | Distill: 6.4910 | Time: 38.1s | ETA: 153.7h
+[22:02:51] Batch 470/15000 | Loss: 16.7870 | Student: 41.0319 | Distill: 6.3963 | Time: 37.7s | ETA: 152.0h
+[22:09:53] Batch 480/15000 | Loss: 15.2682 | Student: 38.0410 | Distill: 5.5085 | Time: 42.2s | ETA: 170.1h
+[22:16:27] Batch 490/15000 | Loss: 16.3861 | Student: 40.1010 | Distill: 6.2227 | Time: 39.5s | ETA: 159.1h
+[22:22:41] Batch 500/15000 | Loss: 14.7465 | Student: 35.7195 | Distill: 5.7580 | Time: 37.4s | ETA: 150.6h
+[22:22:42]   Saved checkpoint at batch 500
+[22:28:55] Batch 510/15000 | Loss: 14.2272 | Student: 34.5366 | Distill: 5.5232 | Time: 37.3s | ETA: 150.3h
+[22:35:09] Batch 520/15000 | Loss: 14.4335 | Student: 34.3086 | Distill: 5.9156 | Time: 37.4s | ETA: 150.2h
+[22:42:03] Batch 530/15000 | Loss: 16.5245 | Student: 41.0377 | Distill: 6.0188 | Time: 41.4s | ETA: 166.5h
+[22:48:18] Batch 540/15000 | Loss: 15.5670 | Student: 37.2717 | Distill: 6.2650 | Time: 37.5s | ETA: 150.5h
+[22:54:34] Batch 550/15000 | Loss: 16.2623 | Student: 41.2035 | Distill: 5.5732 | Time: 37.6s | ETA: 151.0h
+[23:00:50] Batch 560/15000 | Loss: 14.9687 | Student: 36.8538 | Distill: 5.5894 | Time: 37.6s | ETA: 150.9h
+[23:07:21] Batch 570/15000 | Loss: 16.8139 | Student: 40.2605 | Distill: 6.7654 | Time: 39.1s | ETA: 156.8h
+[23:13:52] Batch 580/15000 | Loss: 13.8886 | Student: 33.3296 | Distill: 5.5567 | Time: 39.1s | ETA: 156.5h
+[23:20:15] Batch 590/15000 | Loss: 15.4157 | Student: 39.6090 | Distill: 5.0472 | Time: 38.2s | ETA: 153.0h
+[23:26:42] Batch 600/15000 | Loss: 13.9547 | Student: 35.3095 | Distill: 4.8026 | Time: 38.7s | ETA: 154.8h
+[23:26:42]   *** Saved BEST at batch 600 ***
+[23:32:58] Batch 610/15000 | Loss: 15.1603 | Student: 37.3712 | Distill: 5.6414 | Time: 37.6s | ETA: 150.4h
+[23:39:16] Batch 620/15000 | Loss: 14.9828 | Student: 35.6837 | Distill: 6.1110 | Time: 37.8s | ETA: 151.1h
+[23:45:36] Batch 630/15000 | Loss: 14.5585 | Student: 37.4829 | Distill: 4.7337 | Time: 38.0s | ETA: 151.7h
+[23:52:05] Batch 640/15000 | Loss: 14.8620 | Student: 37.3164 | Distill: 5.2386 | Time: 38.9s | ETA: 155.1h
+[23:58:28] Batch 650/15000 | Loss: 15.4527 | Student: 39.0002 | Distill: 5.3609 | Time: 38.3s | ETA: 152.6h
+[00:04:49] Batch 660/15000 | Loss: 14.1971 | Student: 36.8252 | Distill: 4.4993 | Time: 38.1s | ETA: 151.7h
+[00:11:16] Batch 670/15000 | Loss: 15.5216 | Student: 41.4099 | Distill: 4.4266 | Time: 38.7s | ETA: 154.0h
+[00:17:40] Batch 680/15000 | Loss: 15.6776 | Student: 41.3107 | Distill: 4.6920 | Time: 38.4s | ETA: 152.7h
+[00:23:53] Batch 690/15000 | Loss: 16.3322 | Student: 39.8812 | Distill: 6.2398 | Time: 37.3s | ETA: 148.3h
+[00:30:16] Batch 700/15000 | Loss: 15.4094 | Student: 37.9420 | Distill: 5.7526 | Time: 38.3s | ETA: 152.2h
+[00:30:16]   Saved checkpoint at batch 700
+[00:36:45] Batch 710/15000 | Loss: 13.9338 | Student: 35.8075 | Distill: 4.5593 | Time: 38.8s | ETA: 154.1h
+[00:43:07] Batch 720/15000 | Loss: 17.0730 | Student: 44.3649 | Distill: 5.3764 | Time: 38.2s | ETA: 151.5h
+[00:49:28] Batch 730/15000 | Loss: 16.0669 | Student: 39.2875 | Distill: 6.1152 | Time: 38.2s | ETA: 151.2h
+[00:55:50] Batch 740/15000 | Loss: 13.6810 | Student: 35.0767 | Distill: 4.5114 | Time: 38.2s | ETA: 151.4h
+[01:01:54] Batch 750/15000 | Loss: 16.0953 | Student: 41.1049 | Distill: 5.3769 | Time: 36.3s | ETA: 143.9h
+[01:08:01] Batch 760/15000 | Loss: 14.4945 | Student: 36.7717 | Distill: 4.9472 | Time: 36.7s | ETA: 145.3h
+[01:14:19] Batch 770/15000 | Loss: 15.2783 | Student: 36.7834 | Distill: 6.0619 | Time: 37.7s | ETA: 149.1h
+[01:20:32] Batch 780/15000 | Loss: 16.3308 | Student: 39.7045 | Distill: 6.3135 | Time: 37.3s | ETA: 147.4h
+[01:27:18] Batch 790/15000 | Loss: 15.3357 | Student: 38.4822 | Distill: 5.4158 | Time: 40.6s | ETA: 160.4h
+[01:33:52] Batch 800/15000 | Loss: 15.2116 | Student: 37.0344 | Distill: 5.8590 | Time: 39.3s | ETA: 155.2h
+[01:33:52]   Saved checkpoint at batch 800
+[01:39:53] Batch 810/15000 | Loss: 15.1474 | Student: 38.6179 | Distill: 5.0887 | Time: 36.1s | ETA: 142.5h
+[01:46:17] Batch 820/15000 | Loss: 16.6384 | Student: 42.0878 | Distill: 5.7315 | Time: 38.4s | ETA: 151.1h
+[01:52:36] Batch 830/15000 | Loss: 14.0075 | Student: 36.7130 | Distill: 4.2766 | Time: 37.9s | ETA: 149.2h
+[01:58:46] Batch 840/15000 | Loss: 16.0431 | Student: 37.9554 | Distill: 6.6521 | Time: 37.1s | ETA: 145.8h
+[02:04:54] Batch 850/15000 | Loss: 14.4907 | Student: 36.1726 | Distill: 5.1984 | Time: 36.7s | ETA: 144.3h
+[02:11:01] Batch 860/15000 | Loss: 15.1028 | Student: 37.3278 | Distill: 5.5778 | Time: 36.7s | ETA: 144.2h
+[02:17:36] Batch 870/15000 | Loss: 15.7049 | Student: 40.0765 | Distill: 5.2600 | Time: 39.5s | ETA: 155.2h
+[02:23:57] Batch 880/15000 | Loss: 14.0654 | Student: 35.1384 | Distill: 5.0340 | Time: 38.1s | ETA: 149.4h
+[02:30:07] Batch 890/15000 | Loss: 14.5402 | Student: 36.7088 | Distill: 5.0394 | Time: 37.0s | ETA: 145.0h
+[02:36:20] Batch 900/15000 | Loss: 15.3895 | Student: 38.4829 | Distill: 5.4923 | Time: 37.3s | ETA: 146.0h
+[02:36:20]   Saved checkpoint at batch 900
+[02:42:41] Batch 910/15000 | Loss: 15.1255 | Student: 38.3290 | Distill: 5.1812 | Time: 38.1s | ETA: 149.0h
+[02:48:55] Batch 920/15000 | Loss: 14.1856 | Student: 38.0079 | Distill: 3.9760 | Time: 37.4s | ETA: 146.3h
+[02:55:03] Batch 930/15000 | Loss: 15.4881 | Student: 39.7838 | Distill: 5.0756 | Time: 36.8s | ETA: 143.7h
+[03:01:48] Batch 940/15000 | Loss: 15.1047 | Student: 38.7754 | Distill: 4.9601 | Time: 40.5s | ETA: 158.2h
+[03:07:53] Batch 950/15000 | Loss: 15.6106 | Student: 39.7404 | Distill: 5.2693 | Time: 36.5s | ETA: 142.4h
+[03:13:59] Batch 960/15000 | Loss: 15.9094 | Student: 40.2852 | Distill: 5.4626 | Time: 36.7s | ETA: 142.9h
+[03:20:19] Batch 970/15000 | Loss: 14.3042 | Student: 36.8914 | Distill: 4.6240 | Time: 38.0s | ETA: 148.0h
+[03:26:34] Batch 980/15000 | Loss: 15.8622 | Student: 40.1333 | Distill: 5.4603 | Time: 37.5s | ETA: 146.1h
+[03:32:36] Batch 990/15000 | Loss: 14.9356 | Student: 35.2554 | Distill: 6.2271 | Time: 36.2s | ETA: 140.9h
+[03:38:53] Batch 1000/15000 | Loss: 15.7617 | Student: 39.4055 | Distill: 5.6286 | Time: 37.6s | ETA: 146.3h
+[03:38:53]   Saved checkpoint at batch 1000
+[03:45:10] Batch 1010/15000 | Loss: 13.8713 | Student: 36.7057 | Distill: 4.0850 | Time: 37.7s | ETA: 146.5h
+[03:51:07] Batch 1020/15000 | Loss: 16.1252 | Student: 40.9760 | Distill: 5.4749 | Time: 35.7s | ETA: 138.6h
+[03:57:34] Batch 1030/15000 | Loss: 14.5773 | Student: 38.0224 | Distill: 4.5293 | Time: 38.7s | ETA: 150.1h
+[04:03:38] Batch 1040/15000 | Loss: 15.1443 | Student: 37.6005 | Distill: 5.5201 | Time: 36.4s | ETA: 141.3h
+[04:09:44] Batch 1050/15000 | Loss: 15.4011 | Student: 37.5675 | Distill: 5.9012 | Time: 36.6s | ETA: 141.8h
+[04:16:03] Batch 1060/15000 | Loss: 14.4932 | Student: 37.3152 | Distill: 4.7123 | Time: 37.9s | ETA: 146.8h
+[04:22:38] Batch 1070/15000 | Loss: 15.2133 | Student: 39.9795 | Distill: 4.5993 | Time: 39.5s | ETA: 152.8h

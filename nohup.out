@@ -1,0 +1,230 @@
+Configuring device: MAX78000, simulate=False.
+[18:15:45] === TINY POSE TRAINING - SECOND-LEVEL DISTILLATION ===
+[18:15:45] CPU Cores: 20, Compute threads: 16, Data workers: 8
+[18:15:45] Subset: 15000, Batch: 8, Save every: 100
+[18:15:45] Teacher checkpoint: /home/jkal/Desktop/MLonMCU/ext/ai8x-training/pose_med2_train/best.pth
+[18:15:55] Dataset: 15000 samples, 1875 batches per epoch
+[18:16:00] Tiny Student params: 112,374
+[18:16:00] Model size: 0.43MB (FP32), 0.11MB (8-bit quantized)
+[18:16:00] Note: Model uses QAT - weights are FP32 but quantization is simulated during training
+[18:16:00]       This prepares the model for 8-bit quantization after training completes
+[18:16:00] Loading teacher model from /home/jkal/Desktop/MLonMCU/ext/ai8x-training/pose_med2_train/best.pth...
+[18:16:05] Teacher loaded (first-level student with 659,136 params)
+[18:16:06] Starting training from batch 0...
+[18:16:10] Batch 1/10000 | Loss: 1187.1658 | Student: 1214.1340 | Distill: 1178.1764 | Time: 2.2s | ETA: 6.1h
+[18:16:10] Batch 2/10000 | Loss: 1056.8969 | Student: 1091.2836 | Distill: 1045.4346 | Time: 0.5s | ETA: 1.4h
+[18:16:10] Batch 3/10000 | Loss: 910.4984 | Student: 933.1954 | Distill: 902.9327 | Time: 0.4s | ETA: 1.1h
+[18:16:11] Batch 4/10000 | Loss: 766.8165 | Student: 791.6438 | Distill: 758.5406 | Time: 0.2s | ETA: 27.0m
+[18:16:11] Batch 5/10000 | Loss: 681.4972 | Student: 711.6544 | Distill: 671.4448 | Time: 0.3s | ETA: 47.9m
+[18:16:11] Batch 6/10000 | Loss: 576.3293 | Student: 601.3314 | Distill: 567.9952 | Time: 0.2s | ETA: 29.2m
+[18:16:11] Batch 7/10000 | Loss: 520.6813 | Student: 549.1176 | Distill: 511.2025 | Time: 0.1s | ETA: 24.7m
+[18:16:11] Batch 8/10000 | Loss: 452.8042 | Student: 481.5983 | Distill: 443.2061 | Time: 0.2s | ETA: 36.8m
+[18:16:12] Batch 9/10000 | Loss: 397.2165 | Student: 416.4798 | Distill: 390.7954 | Time: 0.1s | ETA: 23.3m
+[18:16:12] Batch 10/10000 | Loss: 350.4584 | Student: 372.6857 | Distill: 343.0493 | Time: 0.1s | ETA: 23.6m
+[18:16:12] Batch 11/10000 | Loss: 327.2943 | Student: 355.2025 | Distill: 317.9916 | Time: 0.2s | ETA: 29.0m
+[18:16:12] Batch 12/10000 | Loss: 297.2491 | Student: 333.7475 | Distill: 285.0829 | Time: 0.1s | ETA: 22.3m
+[18:16:12] Batch 13/10000 | Loss: 257.7784 | Student: 278.3020 | Distill: 250.9372 | Time: 0.2s | ETA: 33.9m
+[18:16:13] Batch 14/10000 | Loss: 237.7971 | Student: 260.6791 | Distill: 230.1698 | Time: 0.3s | ETA: 46.6m
+[18:16:13] Batch 15/10000 | Loss: 223.1575 | Student: 243.9072 | Distill: 216.2409 | Time: 0.1s | ETA: 23.8m
+[18:16:13] Batch 16/10000 | Loss: 202.0315 | Student: 218.9697 | Distill: 196.3855 | Time: 0.2s | ETA: 32.7m
+[18:16:13] Batch 17/10000 | Loss: 191.0314 | Student: 220.9712 | Distill: 181.0515 | Time: 0.2s | ETA: 30.1m
+[18:16:13] Batch 18/10000 | Loss: 171.8176 | Student: 198.5984 | Distill: 162.8907 | Time: 0.2s | ETA: 39.6m
+[18:16:14] Batch 19/10000 | Loss: 155.5565 | Student: 181.1213 | Distill: 147.0349 | Time: 0.2s | ETA: 27.8m
+[18:16:14] Batch 20/10000 | Loss: 143.9305 | Student: 169.6049 | Distill: 135.3724 | Time: 0.1s | ETA: 22.3m
+[18:16:15] Batch 30/10000 | Loss: 1006.8653 | Student: 1084.1295 | Distill: 981.1105 | Time: 0.2s | ETA: 25.4m
+[18:16:17] Batch 40/10000 | Loss: 49.0213 | Student: 75.9257 | Distill: 40.0532 | Time: 0.2s | ETA: 32.4m
+[18:16:20] Batch 50/10000 | Loss: 33.9818 | Student: 61.8424 | Distill: 24.6949 | Time: 0.3s | ETA: 50.8m
+[18:16:28] Batch 60/10000 | Loss: 27.3079 | Student: 57.6498 | Distill: 17.1940 | Time: 0.8s | ETA: 2.2h
+[18:16:32] Batch 70/10000 | Loss: 22.3062 | Student: 48.1164 | Distill: 13.7028 | Time: 0.3s | ETA: 56.2m
+[18:16:33] Batch 80/10000 | Loss: 18.7704 | Student: 44.7070 | Distill: 10.1249 | Time: 0.1s | ETA: 24.0m
+[18:16:40] Batch 90/10000 | Loss: 18.6668 | Student: 47.2342 | Distill: 9.1443 | Time: 0.6s | ETA: 1.7h
+[18:16:42] Batch 100/10000 | Loss: 17.1546 | Student: 44.2512 | Distill: 8.1225 | Time: 0.2s | ETA: 32.2m
+[18:16:42]   *** Saved BEST at batch 100 ***
+[18:16:49] Batch 110/10000 | Loss: 16.3660 | Student: 45.4304 | Distill: 6.6779 | Time: 0.7s | ETA: 2.0h
+[18:16:51] Batch 120/10000 | Loss: 15.3995 | Student: 43.8545 | Distill: 5.9145 | Time: 0.2s | ETA: 36.9m
+[18:16:59] Batch 130/10000 | Loss: 14.3153 | Student: 40.6811 | Distill: 5.5267 | Time: 0.7s | ETA: 2.0h
+[18:17:01] Batch 140/10000 | Loss: 14.5528 | Student: 39.0009 | Distill: 6.4034 | Time: 0.2s | ETA: 32.4m
+[18:17:02] Batch 150/10000 | Loss: 13.1785 | Student: 39.8204 | Distill: 4.2978 | Time: 0.2s | ETA: 28.0m
+[18:17:04] Batch 160/10000 | Loss: 13.5868 | Student: 41.0736 | Distill: 4.4246 | Time: 0.2s | ETA: 25.1m
+[18:17:05] Batch 170/10000 | Loss: 13.1265 | Student: 40.6617 | Distill: 3.9481 | Time: 0.1s | ETA: 23.2m
+[18:17:07] Batch 180/10000 | Loss: 13.4568 | Student: 43.7944 | Distill: 3.3443 | Time: 0.2s | ETA: 24.7m
+[18:17:09] Batch 190/10000 | Loss: 12.5711 | Student: 40.2895 | Distill: 3.3316 | Time: 0.2s | ETA: 29.6m
+[18:17:11] Batch 200/10000 | Loss: 11.8919 | Student: 38.7263 | Distill: 2.9471 | Time: 0.2s | ETA: 37.4m
+[18:17:11]   *** Saved BEST at batch 200 ***
+[18:17:18] Batch 210/10000 | Loss: 12.2757 | Student: 40.6452 | Distill: 2.8192 | Time: 0.6s | ETA: 1.7h
+[18:17:21] Batch 220/10000 | Loss: 11.9843 | Student: 40.0604 | Distill: 2.6256 | Time: 0.3s | ETA: 55.1m
+[18:17:23] Batch 230/10000 | Loss: 12.0212 | Student: 39.6396 | Distill: 2.8151 | Time: 0.2s | ETA: 31.7m
+[18:17:26] Batch 240/10000 | Loss: 11.1375 | Student: 38.1351 | Distill: 2.1383 | Time: 0.3s | ETA: 46.7m
+[18:17:28] Batch 250/10000 | Loss: 12.9738 | Student: 43.1616 | Distill: 2.9112 | Time: 0.2s | ETA: 26.9m
+[18:17:30] Batch 260/10000 | Loss: 11.6966 | Student: 40.0305 | Distill: 2.2519 | Time: 0.2s | ETA: 33.5m
+[18:17:32] Batch 270/10000 | Loss: 12.3971 | Student: 41.7066 | Distill: 2.6273 | Time: 0.2s | ETA: 37.2m
+[18:17:34] Batch 280/10000 | Loss: 12.9235 | Student: 43.4520 | Distill: 2.7474 | Time: 0.1s | ETA: 23.7m
+[18:17:36] Batch 290/10000 | Loss: 11.2109 | Student: 38.3673 | Distill: 2.1588 | Time: 0.2s | ETA: 40.3m
+[18:17:38] Batch 300/10000 | Loss: 10.9435 | Student: 37.1385 | Distill: 2.2118 | Time: 0.2s | ETA: 27.0m
+[18:17:38]   Saved checkpoint at batch 300
+[18:17:47] Batch 310/10000 | Loss: 11.7326 | Student: 40.6877 | Distill: 2.0809 | Time: 0.9s | ETA: 2.4h
+[18:17:50] Batch 320/10000 | Loss: 14.6653 | Student: 46.3447 | Distill: 4.1055 | Time: 0.3s | ETA: 43.5m
+[18:17:54] Batch 330/10000 | Loss: 11.5782 | Student: 38.9980 | Distill: 2.4383 | Time: 0.4s | ETA: 1.2h
+[18:17:59] Batch 340/10000 | Loss: 11.4994 | Student: 38.7941 | Distill: 2.4012 | Time: 0.5s | ETA: 1.3h
+[18:18:01] Batch 350/10000 | Loss: 11.1456 | Student: 38.1926 | Distill: 2.1299 | Time: 0.1s | ETA: 22.8m
+[18:18:02] Batch 360/10000 | Loss: 11.7117 | Student: 39.5669 | Distill: 2.4266 | Time: 0.1s | ETA: 23.1m
+[18:18:06] Batch 370/10000 | Loss: 10.6491 | Student: 36.8991 | Distill: 1.8991 | Time: 0.4s | ETA: 1.0h
+[18:18:13] Batch 380/10000 | Loss: 11.2634 | Student: 38.7876 | Distill: 2.0886 | Time: 0.7s | ETA: 1.8h
+[18:18:16] Batch 390/10000 | Loss: 10.5729 | Student: 37.0182 | Distill: 1.7578 | Time: 0.3s | ETA: 50.2m
+[18:18:23] Batch 400/10000 | Loss: 11.0933 | Student: 39.5852 | Distill: 1.5960 | Time: 0.7s | ETA: 1.9h
+[18:18:23]   Saved checkpoint at batch 400
+[18:18:28] Batch 410/10000 | Loss: 11.2308 | Student: 40.0753 | Distill: 1.6159 | Time: 0.5s | ETA: 1.4h
+[18:18:30] Batch 420/10000 | Loss: 11.3204 | Student: 39.2057 | Distill: 2.0253 | Time: 0.2s | ETA: 25.4m
+[18:18:32] Batch 430/10000 | Loss: 11.2043 | Student: 39.9116 | Distill: 1.6352 | Time: 0.2s | ETA: 26.7m
+[18:18:33] Batch 440/10000 | Loss: 11.4927 | Student: 40.5476 | Distill: 1.8078 | Time: 0.1s | ETA: 23.2m
+[18:18:35] Batch 450/10000 | Loss: 10.6091 | Student: 37.4775 | Distill: 1.6529 | Time: 0.1s | ETA: 21.3m
+[18:18:36] Batch 460/10000 | Loss: 11.4828 | Student: 41.0134 | Distill: 1.6392 | Time: 0.1s | ETA: 22.8m
+[18:18:42] Batch 470/10000 | Loss: 10.5634 | Student: 36.4391 | Distill: 1.9382 | Time: 0.6s | ETA: 1.7h
+[18:18:45] Batch 480/10000 | Loss: 11.4245 | Student: 41.6422 | Distill: 1.3520 | Time: 0.2s | ETA: 35.8m
+[18:18:47] Batch 490/10000 | Loss: 10.2690 | Student: 36.6843 | Distill: 1.4639 | Time: 0.2s | ETA: 35.3m
+[18:18:49] Batch 500/10000 | Loss: 10.6670 | Student: 38.6775 | Distill: 1.3301 | Time: 0.3s | ETA: 39.8m
+[18:18:50]   *** Saved BEST at batch 500 ***
+[18:18:56] Batch 510/10000 | Loss: 11.3801 | Student: 40.2714 | Distill: 1.7497 | Time: 0.7s | ETA: 1.8h
+[18:18:59] Batch 520/10000 | Loss: 10.7705 | Student: 38.6474 | Distill: 1.4783 | Time: 0.3s | ETA: 46.9m
+[18:19:01] Batch 530/10000 | Loss: 10.6346 | Student: 38.3527 | Distill: 1.3953 | Time: 0.2s | ETA: 28.8m
+[18:19:03] Batch 540/10000 | Loss: 11.1605 | Student: 41.0016 | Distill: 1.2134 | Time: 0.2s | ETA: 31.4m
+[18:19:08] Batch 550/10000 | Loss: 10.3820 | Student: 37.2769 | Distill: 1.4171 | Time: 0.5s | ETA: 1.3h
+[18:19:11] Batch 560/10000 | Loss: 10.0000 | Student: 35.7144 | Distill: 1.4286 | Time: 0.2s | ETA: 36.1m
+[18:19:15] Batch 570/10000 | Loss: 11.5145 | Student: 40.3726 | Distill: 1.8951 | Time: 0.5s | ETA: 1.2h
+[18:19:18] Batch 580/10000 | Loss: 10.9694 | Student: 40.4336 | Distill: 1.1480 | Time: 0.3s | ETA: 46.8m
+[18:19:23] Batch 590/10000 | Loss: 10.5390 | Student: 38.6283 | Distill: 1.1758 | Time: 0.5s | ETA: 1.3h
+[18:19:25] Batch 600/10000 | Loss: 11.8985 | Student: 43.7260 | Distill: 1.2893 | Time: 0.2s | ETA: 25.1m
+[18:19:25]   Saved checkpoint at batch 600
+[18:19:28] Batch 610/10000 | Loss: 9.6590 | Student: 34.8865 | Distill: 1.2498 | Time: 0.3s | ETA: 44.7m
+[18:19:30] Batch 620/10000 | Loss: 10.1652 | Student: 37.4901 | Distill: 1.0569 | Time: 0.2s | ETA: 37.5m
+[18:19:33] Batch 630/10000 | Loss: 10.8398 | Student: 39.2856 | Distill: 1.3579 | Time: 0.2s | ETA: 38.5m
+[18:19:34] Batch 640/10000 | Loss: 9.8536 | Student: 35.9748 | Distill: 1.1465 | Time: 0.1s | ETA: 20.8m
+[18:19:36] Batch 650/10000 | Loss: 11.1675 | Student: 40.1775 | Distill: 1.4975 | Time: 0.2s | ETA: 36.9m
+[18:19:39] Batch 660/10000 | Loss: 11.0351 | Student: 39.2316 | Distill: 1.6362 | Time: 0.2s | ETA: 35.8m
+[18:19:47] Batch 670/10000 | Loss: 10.9203 | Student: 40.0355 | Distill: 1.2152 | Time: 0.8s | ETA: 2.0h
+[18:19:49] Batch 680/10000 | Loss: 10.9427 | Student: 40.5993 | Distill: 1.0572 | Time: 0.2s | ETA: 36.3m
+[18:19:51] Batch 690/10000 | Loss: 10.5940 | Student: 39.1960 | Distill: 1.0600 | Time: 0.2s | ETA: 33.0m
+[18:19:54] Batch 700/10000 | Loss: 9.9222 | Student: 36.0901 | Distill: 1.1995 | Time: 0.3s | ETA: 46.3m
+[18:19:54]   Saved checkpoint at batch 700
+[18:19:59] Batch 710/10000 | Loss: 10.8725 | Student: 38.3376 | Distill: 1.7175 | Time: 0.5s | ETA: 1.2h
+[18:20:05] Batch 720/10000 | Loss: 10.5594 | Student: 38.3464 | Distill: 1.2970 | Time: 0.6s | ETA: 1.4h
+[18:20:12] Batch 730/10000 | Loss: 11.1305 | Student: 40.5341 | Distill: 1.3293 | Time: 0.7s | ETA: 1.8h
+[18:20:14] Batch 740/10000 | Loss: 10.0929 | Student: 36.9247 | Distill: 1.1489 | Time: 0.2s | ETA: 30.5m
+[18:20:16] Batch 750/10000 | Loss: 10.6016 | Student: 38.7304 | Distill: 1.2254 | Time: 0.2s | ETA: 36.9m
+[18:20:18] Batch 760/10000 | Loss: 11.5209 | Student: 41.9631 | Distill: 1.3734 | Time: 0.2s | ETA: 38.0m
+[18:20:21] Batch 770/10000 | Loss: 9.7367 | Student: 35.0016 | Distill: 1.3151 | Time: 0.2s | ETA: 34.5m
+[18:20:22] Batch 780/10000 | Loss: 10.0640 | Student: 37.0010 | Distill: 1.0850 | Time: 0.1s | ETA: 22.7m
+[18:20:24] Batch 790/10000 | Loss: 9.0811 | Student: 33.1166 | Distill: 1.0693 | Time: 0.2s | ETA: 26.1m
+[18:20:28] Batch 800/10000 | Loss: 11.7843 | Student: 43.1420 | Distill: 1.3317 | Time: 0.4s | ETA: 54.2m
+[18:20:28]   Saved checkpoint at batch 800
+[18:20:34] Batch 810/10000 | Loss: 10.9326 | Student: 40.9987 | Distill: 0.9106 | Time: 0.6s | ETA: 1.6h
+[18:20:35] Batch 820/10000 | Loss: 10.4844 | Student: 39.1872 | Distill: 0.9168 | Time: 0.2s | ETA: 23.9m
+[18:20:38] Batch 830/10000 | Loss: 9.5194 | Student: 35.9249 | Distill: 0.7175 | Time: 0.2s | ETA: 36.7m
+[18:20:40] Batch 840/10000 | Loss: 10.4090 | Student: 38.8600 | Distill: 0.9253 | Time: 0.2s | ETA: 30.6m
+[18:20:48] Batch 850/10000 | Loss: 9.9588 | Student: 37.1481 | Distill: 0.8958 | Time: 0.8s | ETA: 1.9h
+[18:20:56] Batch 860/10000 | Loss: 10.6181 | Student: 40.0371 | Distill: 0.8117 | Time: 0.8s | ETA: 2.1h
+[18:20:58] Batch 870/10000 | Loss: 10.9991 | Student: 41.6202 | Distill: 0.7920 | Time: 0.2s | ETA: 35.1m
+[18:21:02] Batch 880/10000 | Loss: 10.0824 | Student: 38.0622 | Distill: 0.7558 | Time: 0.3s | ETA: 47.9m
+[18:21:03] Batch 890/10000 | Loss: 10.6261 | Student: 39.0111 | Distill: 1.1645 | Time: 0.2s | ETA: 27.9m
+[18:21:06] Batch 900/10000 | Loss: 10.3852 | Student: 38.7401 | Distill: 0.9336 | Time: 0.2s | ETA: 33.1m
+[18:21:06]   *** Saved BEST at batch 900 ***
+[18:21:13] Batch 910/10000 | Loss: 9.2584 | Student: 34.2632 | Distill: 0.9235 | Time: 0.7s | ETA: 1.8h
+[18:21:15] Batch 920/10000 | Loss: 10.1028 | Student: 38.0028 | Distill: 0.8028 | Time: 0.2s | ETA: 27.0m
+[18:21:17] Batch 930/10000 | Loss: 11.2031 | Student: 42.2428 | Distill: 0.8565 | Time: 0.2s | ETA: 24.7m
+[18:21:18] Batch 940/10000 | Loss: 10.1263 | Student: 38.4085 | Distill: 0.6989 | Time: 0.1s | ETA: 22.3m
+[18:21:20] Batch 950/10000 | Loss: 10.2198 | Student: 37.9787 | Distill: 0.9669 | Time: 0.1s | ETA: 22.1m
+[18:21:25] Batch 960/10000 | Loss: 9.9083 | Student: 37.2176 | Distill: 0.8052 | Time: 0.6s | ETA: 1.4h
+[18:21:29] Batch 970/10000 | Loss: 9.6368 | Student: 35.7771 | Distill: 0.9234 | Time: 0.4s | ETA: 59.3m
+[18:21:31] Batch 980/10000 | Loss: 10.0653 | Student: 37.8203 | Distill: 0.8136 | Time: 0.2s | ETA: 24.5m
+[18:21:33] Batch 990/10000 | Loss: 9.1768 | Student: 34.0839 | Distill: 0.8744 | Time: 0.3s | ETA: 39.1m
+[18:21:36] Batch 1000/10000 | Loss: 10.6201 | Student: 40.2487 | Distill: 0.7438 | Time: 0.3s | ETA: 39.5m
+[18:21:36]   Saved checkpoint at batch 1000
+[18:21:47] Batch 1010/10000 | Loss: 10.0367 | Student: 37.6843 | Distill: 0.8208 | Time: 1.0s | ETA: 2.6h
+[18:21:51] Batch 1020/10000 | Loss: 9.6027 | Student: 36.5354 | Distill: 0.6251 | Time: 0.5s | ETA: 1.2h
+[18:21:53] Batch 1030/10000 | Loss: 10.5529 | Student: 40.1369 | Distill: 0.6916 | Time: 0.2s | ETA: 25.7m
+[18:21:58] Batch 1040/10000 | Loss: 10.6704 | Student: 40.7495 | Distill: 0.6440 | Time: 0.5s | ETA: 1.2h
+[18:22:08] Batch 1050/10000 | Loss: 9.4803 | Student: 35.6930 | Distill: 0.7428 | Time: 1.0s | ETA: 2.6h
+[18:22:15] Batch 1060/10000 | Loss: 10.3762 | Student: 38.3365 | Distill: 1.0560 | Time: 0.7s | ETA: 1.8h
+[18:22:18] Batch 1070/10000 | Loss: 9.3177 | Student: 34.9409 | Distill: 0.7766 | Time: 0.2s | ETA: 36.3m
+[18:22:20] Batch 1080/10000 | Loss: 10.3822 | Student: 39.1040 | Distill: 0.8083 | Time: 0.2s | ETA: 27.3m
+[18:22:22] Batch 1090/10000 | Loss: 9.0239 | Student: 34.0922 | Distill: 0.6677 | Time: 0.2s | ETA: 37.1m
+[18:22:24] Batch 1100/10000 | Loss: 9.8208 | Student: 36.9247 | Distill: 0.7862 | Time: 0.2s | ETA: 27.6m
+[18:22:24]   *** Saved BEST at batch 1100 ***
+[18:22:35] Batch 1110/10000 | Loss: 9.3831 | Student: 35.4517 | Distill: 0.6936 | Time: 1.1s | ETA: 2.7h
+[18:22:37] Batch 1120/10000 | Loss: 10.4181 | Student: 39.8062 | Distill: 0.6221 | Time: 0.2s | ETA: 28.4m
+[18:22:40] Batch 1130/10000 | Loss: 10.8275 | Student: 41.1615 | Distill: 0.7162 | Time: 0.2s | ETA: 35.4m
+[18:22:42] Batch 1140/10000 | Loss: 10.0513 | Student: 37.9889 | Distill: 0.7387 | Time: 0.2s | ETA: 23.9m
+[18:22:49] Batch 1150/10000 | Loss: 9.0783 | Student: 34.2020 | Distill: 0.7037 | Time: 0.7s | ETA: 1.8h
+[18:22:53] Batch 1160/10000 | Loss: 10.6482 | Student: 40.6156 | Distill: 0.6590 | Time: 0.5s | ETA: 1.1h
+[18:22:58] Batch 1170/10000 | Loss: 10.7515 | Student: 40.7749 | Distill: 0.7437 | Time: 0.4s | ETA: 1.1h
+[18:23:00] Batch 1180/10000 | Loss: 9.9655 | Student: 37.9966 | Distill: 0.6218 | Time: 0.2s | ETA: 26.3m
+[18:23:03] Batch 1190/10000 | Loss: 9.8368 | Student: 37.4560 | Distill: 0.6304 | Time: 0.3s | ETA: 42.8m
+[18:23:07] Batch 1200/10000 | Loss: 10.5163 | Student: 40.4217 | Distill: 0.5478 | Time: 0.4s | ETA: 58.3m
+[18:23:07]   Saved checkpoint at batch 1200
+[18:23:11] Batch 1210/10000 | Loss: 9.8243 | Student: 37.5801 | Distill: 0.5724 | Time: 0.4s | ETA: 57.4m
+[18:23:13] Batch 1220/10000 | Loss: 11.2099 | Student: 42.4408 | Distill: 0.7996 | Time: 0.2s | ETA: 32.8m
+[18:23:25] Batch 1230/10000 | Loss: 9.4292 | Student: 35.9472 | Distill: 0.5899 | Time: 1.2s | ETA: 2.8h
+[18:23:27] Batch 1240/10000 | Loss: 10.7869 | Student: 41.3268 | Distill: 0.6070 | Time: 0.2s | ETA: 29.1m
+[18:23:31] Batch 1250/10000 | Loss: 10.1118 | Student: 38.5792 | Distill: 0.6226 | Time: 0.4s | ETA: 58.1m
+[18:23:32] Batch 1260/10000 | Loss: 9.9276 | Student: 37.9163 | Distill: 0.5981 | Time: 0.2s | ETA: 23.8m
+[18:23:37] Batch 1270/10000 | Loss: 10.8553 | Student: 41.7606 | Distill: 0.5535 | Time: 0.5s | ETA: 1.2h
+[18:23:39] Batch 1280/10000 | Loss: 10.7748 | Student: 41.1350 | Distill: 0.6548 | Time: 0.2s | ETA: 28.4m
+[18:23:43] Batch 1290/10000 | Loss: 10.8746 | Student: 41.8067 | Distill: 0.5639 | Time: 0.4s | ETA: 59.7m
+[18:23:45] Batch 1300/10000 | Loss: 10.7968 | Student: 41.1901 | Distill: 0.6657 | Time: 0.2s | ETA: 26.1m
+[18:23:45]   Saved checkpoint at batch 1300
+[18:23:56] Batch 1310/10000 | Loss: 10.8115 | Student: 41.4349 | Distill: 0.6037 | Time: 1.0s | ETA: 2.5h
+[18:23:58] Batch 1320/10000 | Loss: 9.1188 | Student: 34.6800 | Distill: 0.5985 | Time: 0.2s | ETA: 30.3m
+[18:24:08] Batch 1330/10000 | Loss: 10.5052 | Student: 40.4935 | Distill: 0.5091 | Time: 1.0s | ETA: 2.5h
+[18:24:10] Batch 1340/10000 | Loss: 10.0506 | Student: 38.2801 | Distill: 0.6408 | Time: 0.2s | ETA: 25.5m
+[18:24:12] Batch 1350/10000 | Loss: 10.7961 | Student: 41.5201 | Distill: 0.5548 | Time: 0.2s | ETA: 22.2m
+[18:24:14] Batch 1360/10000 | Loss: 10.2591 | Student: 39.1132 | Distill: 0.6411 | Time: 0.2s | ETA: 25.4m
+[18:24:15] Batch 1370/10000 | Loss: 9.9491 | Student: 37.7585 | Distill: 0.6792 | Time: 0.2s | ETA: 21.9m
+[18:24:17] Batch 1380/10000 | Loss: 9.2554 | Student: 35.0762 | Distill: 0.6484 | Time: 0.2s | ETA: 25.0m
+[18:24:25] Batch 1390/10000 | Loss: 10.0396 | Student: 38.7286 | Distill: 0.4766 | Time: 0.8s | ETA: 1.8h
+Traceback (most recent call last):
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/train_pose_tiny.py", line 460, in <module>
+    running_loss = 0
+
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/train_pose_tiny.py", line 359, in main
+    batch_num = start_batch
+                        ^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/train_pose_tiny.py", line 59, in forward
+    out = self.teacher(x)
+          ^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/train_pose_tiny.py", line 294, in forward
+    def __init__(self):
+                        
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/ai8x.py", line 825, in forward
+    x = self.bn(x)
+        ^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/modules/batchnorm.py", line 175, in forward
+    return F.batch_norm(
+           ^^^^^^^^^^^^^
+  File "/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/lib/python3.12/site-packages/torch/nn/functional.py", line 2509, in batch_norm
+    return torch.batch_norm(
+           ^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

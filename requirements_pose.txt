@@ -1,0 +1,30 @@
+# Requirements for Pose Estimation Training with Knowledge Distillation
+# Install with: pip install -r requirements_pose.txt
+
+# Core PyTorch (CPU version for faster install, use torch with CUDA if you have GPU)
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Image processing
+opencv-python>=4.5.0
+opencv-python-headless>=4.5.0  # For headless servers
+
+# Data handling
+numpy>=1.20.0
+pillow>=8.0.0
+
+# Visualization and logging
+tqdm>=4.60.0
+matplotlib>=3.5.0
+
+# For COCO dataset
+pycocotools>=2.0.0
+
+# Optional: for TensorBoard logging
+tensorboard>=2.10.0
+
+
+
+
+
+

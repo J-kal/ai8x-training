@@ -1,0 +1,95 @@
+nohup: ignoring input
+
+=== Inspecting checkpoint: 4am_best.pth ===
+  Detected ai8x layer quantization metadata (native QAT support)
+  Detected ai8x layer quantization metadata (native QAT support)
+  Architecture: Unknown (not in checkpoint)
+  Dataset: Unknown (not in checkpoint)
+  Epoch/Batch: 500
+  QAT trained: True
+  Has compression schedule: False
+  Checkpoint format: model (train_pose_cpu.py format)
+
+✓ Model appears to be QAT-trained, using QAT quantization (no clip method needed)
+
+Attempting to auto-detect data path for dataset: COCO_POSE
+  Found data path: /home/jkal/Desktop/MLonMCU/lightweight-human-pose-estimation.pytorch/coco
+  Using 20 PyTorch threads
+
+=== Standalone Pose Model Pruning ===
+  Checkpoint: 4am_best.pth
+  Architecture: ai85posenet_small
+  Epochs: 1, Batch size: 16, LR: 5e-05
+  Subset size: 2500
+Configuring device: MAX78000, simulate=False.
+  Loaded model weights from model
+  Original parameters: 659,136
+  Applying magnitude pruning (30% sparsity)...
+  Pruned 30 layers
+  Made pruning permanent: 334566/659136 = 50.8% sparsity
+  Saved 15 sparsity masks
+  Dataset: 2500 samples, 157 batches
+  Teacher model loaded from 4am_best.pth
+  Starting fine-tuning for 1 epochs... mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+WARNING: No `extras` in checkpoint file.
+Configuring device: MAX78000
+Converting checkpoint file /tmp/converted_xdgo1jz5.pth.tar to /home/jkal/Desktop/MLonMCU/ext/ai8x-training/batch_201_med1_q8.pth.tar
+      Batch 0/157: Loss=107.9079
+      Batch 5/157: Loss=102.5132
+      Batch 10/157: Loss=97.5846
+      Batch 15/157: Loss=91.7534
+      Batch 20/157: Loss=87.1930
+      Batch 25/157: Loss=86.7580
+      Batch 30/157: Loss=79.5038
+      Batch 35/157: Loss=77.9553
+      Batch 40/157: Loss=72.7761
+      Batch 45/157: Loss=74.3467
+      Batch 50/157: Loss=68.6950
+      Batch 55/157: Loss=68.9942
+      Batch 60/157: Loss=65.2296
+      Batch 65/157: Loss=66.4974
+      Batch 70/157: Loss=60.4155
+      Batch 75/157: Loss=61.4925
+      Batch 80/157: Loss=56.2991
+      Batch 85/157: Loss=52.5371
+      Batch 90/157: Loss=53.1894
+      Batch 95/157: Loss=50.7801
+      Batch 100/157: Loss=48.7300
+      Batch 105/157: Loss=47.0104
+      Batch 110/157: Loss=45.6325
+      Batch 115/157: Loss=46.7297
+      Batch 120/157: Loss=45.0224
+      Batch 125/157: Loss=41.9221
+      Batch 130/157: Loss=40.8074
+      Batch 135/157: Loss=40.3868
+      Batch 140/157: Loss=39.1186
+      Batch 145/157: Loss=37.9738
+      Batch 150/157: Loss=38.5710
+      Batch 155/157: Loss=35.8285
+    Epoch 1/1: Loss=61.9080, Sparsity=50.8%
+  Final sparsity: 334566/659136 = 50.8%
+  Saved pruned model to: 4am_best_pruned.pth
+
+=== Quantizing Model to int8 ===
+  Input: 4am_best_pruned.pth
+  Output: /home/jkal/Desktop/MLonMCU/ext/ai8x-training/batch_201_med1_q8.pth.tar
+  Device: MAX78000
+  Converting checkpoint format for quantization...
+  Converted checkpoint format: 'model' -> 'state_dict'
+
+Running quantization command:
+/home/jkal/Desktop/MLonMCU/ext/ai8x-training/venv_pose/bin/python3 /home/jkal/Desktop/MLonMCU/ext/ai8x-synthesis/quantize.py /tmp/converted_xdgo1jz5.pth.tar /home/jkal/Desktop/MLonMCU/ext/ai8x-training/batch_201_med1_q8.pth.tar --device MAX78000
+
+
+✓ Quantization complete! Output: /home/jkal/Desktop/MLonMCU/ext/ai8x-training/batch_201_med1_q8.pth.tar
+
+============================================================
+SUMMARY
+============================================================
+Input model: 4am_best.pth
+Pruned model: 4am_best_pruned.pth
+Quantized model: batch_201_med1_q8.pth.tar
+
+✓ Model preparation complete!
+
+The quantized model 'batch_201_med1_q8.pth.tar' is ready for MAX78000 deployment.

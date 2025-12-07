@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../lightweight-human-pose-estimation.pytorch"
+		},
+		{
+			"path": "../ai8x-synthesis"
 		}
 	],
 	"settings": {
