@@ -23,7 +23,7 @@ def build_args():
         "--device", "gpu",
         "--teacher", "/content/drive/MyDrive/MLonMCU/Models/MAX78000/starting/checkpoint_iter_370000.pth",
         "--labels", "/content/drive/MyDrive/MLonMCU/Datasets/annotations/prepared_train_annotation.pkl",
-        "--images", "/content/drive/MyDrive/MLonMCU/Dataset/train2014/,
+        "--images", "/content/drive/MyDrive/MLonMCU/Datasets/train2014",
         "--output", "pose_drive_checkpoints",
         # T4-friendly defaults (adjust as needed)
         "--subset", "120000",       # use most of the dataset
