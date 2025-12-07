@@ -21,9 +21,9 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Subset
 
-# Repo paths (used for defaults)
-POSE_REPO = '/home/jkal/Desktop/MLonMCU/lightweight-human-pose-estimation.pytorch'
-AI8X_REPO = '/home/jkal/Desktop/MLonMCU/ext/ai8x-training'
+# Repo paths (used for defaults) - Colab-friendly
+POSE_REPO = '/content/lightweight-human-pose-estimation.pytorch'
+AI8X_REPO = '/content/ai8x-training'
 sys.path.insert(0, POSE_REPO)
 sys.path.insert(0, AI8X_REPO)
 
