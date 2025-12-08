@@ -9,8 +9,14 @@ Defaults:
 """
 
 import argparse
+import sys
 from pathlib import Path
 import torch
+
+# Ensure repo root is importable when the script is invoked by absolute path
+REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from train_pose_flexible_2mb import StudentModel2MB  # type: ignore
 from modules.load_state import load_state  # type: ignore
