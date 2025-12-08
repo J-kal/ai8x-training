@@ -333,7 +333,13 @@ def main():
     teacher_path = cache_from_drive(args.teacher, log_file=log_file)
     teacher_net = PoseEstimationWithMobileNet(num_refinement_stages=1, num_channels=128)
     ckpt = torch.load(teacher_path, map_location='cpu')
-    load_state(teacher_net, ckpt)
+    # Accept both distiller-style ("state_dict") and our flexible checkpoints ("model")
+    if isinstance(ckpt, dict) and 'state_dict' in ckpt:
+        load_state(teacher_net, ckpt)
+    elif isinstance(ckpt, dict) and 'model' in ckpt:
+        teacher_net.load_state_dict(ckpt['model'], strict=False)
+    else:
+        teacher_net.load_state_dict(ckpt, strict=False)
     teacher = TeacherWrapper(teacher_net).to(device)
     teacher.eval()
     log("Teacher loaded", log_file)
