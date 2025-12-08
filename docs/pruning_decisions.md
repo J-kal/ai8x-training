@@ -33,3 +33,4 @@
 - Increase `--agp-steps` if you plan to integrate the pruning into a fine-tuning loop and want a gentler schedule.
 - Lower `--target-sparsity` for accuracy-sensitive layers or pass a custom `--weights` list to exclude fragile parts of the network.
 - Switch to `agp-unstructured` when structured pruning fails due to channel dependencies in custom blocks.
+

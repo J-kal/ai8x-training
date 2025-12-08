@@ -18,13 +18,26 @@ from __future__ import annotations
 
 import argparse
 import importlib
+import sys
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import torch
 
+# Ensure local distiller package is importable when running from scripts/
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+DISTILLER_ROOT = REPO_ROOT / "distiller"
+for p in (REPO_ROOT, DISTILLER_ROOT):
+    p_str = str(p)
+    if p_str not in sys.path:
+        sys.path.insert(0, p_str)
+
 import distiller  # type: ignore[import]
-from distiller import pruning as pruning_mod  # type: ignore[attr-defined]
+try:
+    from distiller import pruning as pruning_mod  # type: ignore[attr-defined]
+except ImportError:
+    import distiller.pruning as pruning_mod  # type: ignore[attr-defined]
 
 
 PruneResult = Tuple[torch.nn.Module, Dict[str, Any], float]
@@ -241,3 +254,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
