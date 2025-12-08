@@ -52,9 +52,12 @@ def main() -> None:
     # Load model
     model = StudentModel2MB().to(device)
     ckpt = torch.load(args.source, map_location=device)
-    # Normalize checkpoint format: wrap bare state_dict into expected dict
-    if isinstance(ckpt, dict) and ("state_dict" in ckpt or "model" in ckpt):
-        normalized = ckpt
+    # Normalize checkpoint format: support bare state_dict, {"state_dict": ...}, {"model": ...}
+    if isinstance(ckpt, dict):
+        if "state_dict" in ckpt or "model" in ckpt:
+            normalized = ckpt
+        else:
+            normalized = {"state_dict": ckpt}
     else:
         normalized = {"state_dict": ckpt}
     load_state(model, normalized)
