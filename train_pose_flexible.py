@@ -20,6 +20,7 @@ import os
 import sys
 import time
 import multiprocessing
+import shutil
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -209,6 +210,24 @@ def configure_workers(device_choice):
     return min(8, num_cores)  # GPU: prioritize loader over compute threads
 
 
+def cache_from_drive(path, cache_dir='/content/ai8x_cache', log_file=None):
+    """Copy a Drive file to local cache to avoid Drive timeouts."""
+    if not path or not path.startswith('/content/drive/'):
+        return path
+    try:
+        os.makedirs(cache_dir, exist_ok=True)
+        dest = os.path.join(cache_dir, os.path.basename(path))
+        # Refresh cache if source is newer or cache missing
+        if (not os.path.exists(dest) or
+                os.path.getmtime(path) > os.path.getmtime(dest)):
+            log(f"Caching Drive file to local: {dest}", log_file)
+            shutil.copy2(path, dest)
+        return dest
+    except Exception as e:
+        log(f"Warning: failed to cache {path} locally ({e}), using Drive path directly", log_file)
+        return path
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--device', choices=['cpu', 'gpu'], default='gpu', help='Training device (default: gpu)')
@@ -316,8 +335,9 @@ def main():
     student = StudentModel().to(device)
     log(f"Student params: {sum(p.numel() for p in student.parameters()):,}", log_file)
 
+    teacher_path = cache_from_drive(args.teacher, log_file=log_file)
     teacher_net = PoseEstimationWithMobileNet(num_refinement_stages=1, num_channels=128)
-    ckpt = torch.load(args.teacher, map_location='cpu')
+    ckpt = torch.load(teacher_path, map_location='cpu')
     load_state(teacher_net, ckpt)
     teacher = TeacherWrapper(teacher_net).to(device)
     teacher.eval()
@@ -334,8 +354,9 @@ def main():
         is_resuming = True
         log("", log_file)
         log("=== RESUMING TRAINING ===", log_file)
-        log(f"Loading checkpoint from {checkpoint_path}...", log_file)
-        ckpt = torch.load(checkpoint_path, map_location='cpu')
+        cache_ckpt_path = cache_from_drive(checkpoint_path, log_file=log_file)
+        log(f"Loading checkpoint from {cache_ckpt_path}...", log_file)
+        ckpt = torch.load(cache_ckpt_path, map_location='cpu')
         student.load_state_dict(ckpt['model'])
         if 'optimizer' in ckpt:
             optimizer.load_state_dict(ckpt['optimizer'])
