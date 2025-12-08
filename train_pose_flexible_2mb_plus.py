@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Slightly larger (~0.42M params) pose student:
-- CPM set to 80 channels.
-- Head pre-logits widened to 80 channels.
+Larger (step-up) pose student (~0.7M params):
+- CPM set to 128 channels.
+- Head pre-logits widened to 128 channels.
 - Same 128x128 input and 19/38 outputs; FP32 by default.
 """
 
@@ -76,14 +76,14 @@ class StudentModel2MBPlus(nn.Module):
         self.conv7 = ai8x.FusedConv2dBNReLU(64, 96, 3, stride=1, padding=1, bias=True)
         self.conv8 = ai8x.FusedConv2dBNReLU(96, 96, 3, stride=1, padding=1, bias=True)
         # CPM
-        self.cpm1 = ai8x.FusedConv2dBNReLU(96, 80, 1, padding=0, bias=True)
-        self.cpm2 = ai8x.FusedConv2dBNReLU(80, 80, 3, padding=1, bias=True)
-        self.cpm3 = ai8x.FusedConv2dBNReLU(80, 80, 3, padding=1, bias=True)
+        self.cpm1 = ai8x.FusedConv2dBNReLU(96, 128, 1, padding=0, bias=True)
+        self.cpm2 = ai8x.FusedConv2dBNReLU(128, 128, 3, padding=1, bias=True)
+        self.cpm3 = ai8x.FusedConv2dBNReLU(128, 128, 3, padding=1, bias=True)
         # Heads
-        self.heat_conv = ai8x.FusedConv2dBNReLU(80, 80, 1, padding=0, bias=True)
-        self.heat_out = ai8x.Conv2d(80, 19, 1, padding=0, bias=True, wide=True)
-        self.paf_conv = ai8x.FusedConv2dBNReLU(80, 80, 1, padding=0, bias=True)
-        self.paf_out = ai8x.Conv2d(80, 38, 1, padding=0, bias=True, wide=True)
+        self.heat_conv = ai8x.FusedConv2dBNReLU(128, 128, 1, padding=0, bias=True)
+        self.heat_out = ai8x.Conv2d(128, 19, 1, padding=0, bias=True, wide=True)
+        self.paf_conv = ai8x.FusedConv2dBNReLU(128, 128, 1, padding=0, bias=True)
+        self.paf_out = ai8x.Conv2d(128, 38, 1, padding=0, bias=True, wide=True)
 
     def forward(self, x):
         x = self.conv1(x); x = self.conv2(x); x = self.conv3(x)
