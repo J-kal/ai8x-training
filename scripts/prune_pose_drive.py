@@ -52,7 +52,12 @@ def main() -> None:
     # Load model
     model = StudentModel2MB().to(device)
     ckpt = torch.load(args.source, map_location=device)
-    load_state(model, ckpt)
+    # Normalize checkpoint format: wrap bare state_dict into expected dict
+    if isinstance(ckpt, dict) and ("state_dict" in ckpt or "model" in ckpt):
+        normalized = ckpt
+    else:
+        normalized = {"state_dict": ckpt}
+    load_state(model, normalized)
 
     # Prune
     model, masks, sparsity = prune_model(
