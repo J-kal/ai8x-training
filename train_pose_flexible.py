@@ -6,6 +6,10 @@ Key differences vs train_pose_cpu.py:
 - Select device via flag: --device gpu|cpu (default: gpu; falls back to cpu if CUDA unavailable)
 - Pass teacher checkpoint, labels file, and image folder directly.
 - Same fast logging and batch-level checkpoint cadence.
+
+Defaults are Colab/Drive friendly and now save + resume from
+`/content/drive/MyDrive/MLonMCU/Models/MAX78000/IP_8MB`. If
+`best.pth` exists there, training will continue from it automatically.
 """
 
 import argparse
@@ -19,11 +23,14 @@ import multiprocessing
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from torch.cuda import amp
 from torch.utils.data import DataLoader, Subset
 
 # Repo paths (used for defaults) - Colab-friendly
 POSE_REPO = '/content/lightweight-human-pose-estimation.pytorch'
 AI8X_REPO = '/content/ai8x-training'
+# Drive location for saving/resuming checkpoints by default
+DEFAULT_MODEL_DIR = '/content/drive/MyDrive/MLonMCU/Models/MAX78000/IP_8MB'
 sys.path.insert(0, POSE_REPO)
 sys.path.insert(0, AI8X_REPO)
 
@@ -207,12 +214,20 @@ def main():
     parser.add_argument('--device', choices=['cpu', 'gpu'], default='gpu', help='Training device (default: gpu)')
     parser.add_argument('--subset', type=int, default=5000, help='Dataset size (default: 5000)')
     parser.add_argument('--batch-size', type=int, default=8, help='Batch size')
+    parser.add_argument('--epochs', type=float, default=None,
+                        help='Number of epochs to run (overrides total-batches)')
     parser.add_argument('--save-every', type=int, default=100, help='Save every N batches')
     parser.add_argument('--total-batches', type=int, default=5000, help='Total batches to train')
     parser.add_argument('--lr', type=float, default=0.001)
+    parser.add_argument('--amp', dest='amp', action='store_true', default=True,
+                        help='Enable mixed precision on CUDA (default: enabled)')
+    parser.add_argument('--no-amp', dest='amp', action='store_false',
+                        help='Disable mixed precision')
     parser.add_argument('--resume', type=str, default=None, help='Path to checkpoint to resume from (deprecated, use --checkpoint)')
-    parser.add_argument('--checkpoint', type=str, default=None, help='Path to checkpoint to start from. If not provided, will auto-detect in output dir')
-    parser.add_argument('--output', type=str, default='pose_flexible_checkpoints')
+    parser.add_argument('--checkpoint', type=str, default=None,
+                        help='Path to checkpoint to start from. If omitted, will auto-detect and prefer Drive best.pth')
+    parser.add_argument('--output', type=str, default=DEFAULT_MODEL_DIR,
+                        help='Directory to save checkpoints (default: Drive IP_8MB)')
     parser.add_argument('--teacher', type=str, default=os.path.join(AI8X_REPO, 'models/checkpoint_iter_370000.pth'),
                         help='Path to teacher checkpoint')
     parser.add_argument('--dataset-root', type=str, default=os.path.join(POSE_REPO, 'coco'),
@@ -232,14 +247,19 @@ def main():
             log("CUDA not available, falling back to CPU")
         device = torch.device('cpu')
 
+    enable_amp = args.amp and device.type == 'cuda'
+    if args.amp and device.type != 'cuda':
+        log("AMP requested but CUDA not available; running in FP32", None)
+
     # Data workers / threads
     auto_workers = configure_workers('gpu' if device.type == 'cuda' else 'cpu')
     data_workers = args.num_workers if args.num_workers is not None else auto_workers
 
     os.makedirs(args.output, exist_ok=True)
     log_file = os.path.join(args.output, 'log.txt')
+    default_drive_best = os.path.join(DEFAULT_MODEL_DIR, 'best.pth')
 
-    # Determine checkpoint path: explicit > resume > auto-detect
+    # Determine checkpoint path: explicit > resume > auto-detect > default Drive best
     checkpoint_path = None
     if args.checkpoint:
         checkpoint_path = args.checkpoint
@@ -253,10 +273,17 @@ def main():
         elif os.path.exists(best_path):
             checkpoint_path = best_path
 
+    if checkpoint_path is None and args.output == DEFAULT_MODEL_DIR and os.path.exists(default_drive_best):
+        checkpoint_path = default_drive_best
+
     log("=== FLEXIBLE POSE TRAINING ===", log_file)
     log(f"Device: {device}", log_file)
     log(f"Subset: {args.subset}, Batch: {args.batch_size}, Save every: {args.save_every}", log_file)
     log(f"Teacher: {args.teacher}", log_file)
+    log(f"Output dir: {args.output}", log_file)
+    log(f"Mixed precision: {'ON' if enable_amp else 'OFF'}", log_file)
+    if checkpoint_path:
+        log(f"Checkpoint preference: {checkpoint_path}", log_file)
 
     # Dataset paths
     labels_path = args.labels or os.path.join(args.dataset_root, 'prepared_train_annotations.pkl')
@@ -274,6 +301,17 @@ def main():
                         persistent_workers=(data_workers > 0))
     log(f"Dataset: {len(dataset)} samples, {len(loader)} batches per epoch", log_file)
 
+    # Determine total training steps
+    steps_per_epoch = len(loader)
+    target_batches = args.total_batches
+    if args.epochs is not None:
+        target_batches = int(args.epochs * steps_per_epoch)
+        if target_batches <= 0:
+            raise ValueError("Computed total batches from epochs is zero; check subset/batch-size/epochs.")
+        log(f"Epochs requested: {args.epochs} -> total batches: {target_batches}", log_file)
+    else:
+        log(f"Total batches (no epochs override): {target_batches}", log_file)
+
     # Models
     student = StudentModel().to(device)
     log(f"Student params: {sum(p.numel() for p in student.parameters()):,}", log_file)
@@ -286,6 +324,7 @@ def main():
     log("Teacher loaded", log_file)
 
     optimizer = optim.Adam(student.parameters(), lr=args.lr)
+    scaler = amp.GradScaler(enabled=enable_amp)
 
     # Load checkpoint if available
     start_batch = 0
@@ -323,51 +362,57 @@ def main():
     batch_times = []
     training_start = time.time()
 
-    while batch_num < args.total_batches:
+    while batch_num < target_batches:
         epoch += 1
         for imgs, heatmaps, pafs in loader:
             batch_start = time.time()
             batch_num += 1
-            if batch_num > args.total_batches:
+            if batch_num > target_batches:
                 break
 
             imgs = imgs.to(device, non_blocking=True)
             heatmaps = heatmaps.to(device, non_blocking=True)
             pafs = pafs.to(device, non_blocking=True)
 
-            # Forward
-            out = student(imgs)
-            with torch.no_grad():
-                t_out = teacher(imgs)
+            with amp.autocast(enabled=enable_amp):
+                # Forward
+                out = student(imgs)
+                with torch.no_grad():
+                    t_out = teacher(imgs)
 
-            batch_size = imgs.shape[0]
-            heatmap_mask = torch.ones_like(heatmaps)
-            paf_mask = torch.ones_like(pafs)
+                batch_size = imgs.shape[0]
+                heatmap_mask = torch.ones_like(heatmaps)
+                paf_mask = torch.ones_like(pafs)
 
-            # Student loss: Masked L2 loss
-            heatmap_diff = (out[0] - heatmaps) * heatmap_mask
-            heatmap_loss = (heatmap_diff * heatmap_diff).sum() / 2 / batch_size
+                # Student loss: Masked L2 loss
+                heatmap_diff = (out[0] - heatmaps) * heatmap_mask
+                heatmap_loss = (heatmap_diff * heatmap_diff).sum() / 2 / batch_size
 
-            paf_diff = (out[1] - pafs) * paf_mask
-            paf_loss = (paf_diff * paf_diff).sum() / 2 / batch_size
+                paf_diff = (out[1] - pafs) * paf_mask
+                paf_loss = (paf_diff * paf_diff).sum() / 2 / batch_size
 
-            student_loss = heatmap_loss + paf_loss
+                student_loss = heatmap_loss + paf_loss
 
-            # Distillation loss
-            distill_heatmap_diff = (out[0] - t_out[0].detach())
-            distill_heatmap_loss = (distill_heatmap_diff * distill_heatmap_diff).sum() / 2 / batch_size
+                # Distillation loss
+                distill_heatmap_diff = (out[0] - t_out[0].detach())
+                distill_heatmap_loss = (distill_heatmap_diff * distill_heatmap_diff).sum() / 2 / batch_size
 
-            distill_paf_diff = (out[1] - t_out[1].detach())
-            distill_paf_loss = (distill_paf_diff * distill_paf_diff).sum() / 2 / batch_size
+                distill_paf_diff = (out[1] - t_out[1].detach())
+                distill_paf_loss = (distill_paf_diff * distill_paf_diff).sum() / 2 / batch_size
 
-            distill_loss = distill_heatmap_loss + distill_paf_loss
+                distill_loss = distill_heatmap_loss + distill_paf_loss
 
-            # Combined loss
-            loss = 0.3 * student_loss + 0.7 * distill_loss
+                # Combined loss
+                loss = 0.3 * student_loss + 0.7 * distill_loss
 
             optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+            if enable_amp:
+                scaler.scale(loss).backward()
+                scaler.step(optimizer)
+                scaler.update()
+            else:
+                loss.backward()
+                optimizer.step()
 
             # Track metrics
             batch_time = time.time() - batch_start
@@ -384,11 +429,11 @@ def main():
                     avg_student = student_loss.item()
                     avg_distill = distill_loss.item()
                     avg_time = batch_time
-                    remaining = args.total_batches - batch_num
+                    remaining = target_batches - batch_num
                     eta_sec = avg_time * remaining
                     eta_str = f"{eta_sec/3600:.1f}h" if eta_sec > 3600 else f"{eta_sec/60:.1f}m"
 
-                    log(f"Batch {batch_num}/{args.total_batches} | "
+                    log(f"Batch {batch_num}/{target_batches} | "
                         f"Loss: {avg_loss:.4f} | Student: {avg_student:.4f} | "
                         f"Distill: {avg_distill:.4f} | Time: {avg_time:.1f}s | ETA: {eta_str}", log_file)
                 else:
@@ -396,11 +441,11 @@ def main():
                     avg_student = running_student / 10
                     avg_distill = running_distill / 10
                     avg_time = sum(batch_times[-10:]) / min(10, len(batch_times))
-                    remaining = args.total_batches - batch_num
+                    remaining = target_batches - batch_num
                     eta_sec = avg_time * remaining
                     eta_str = f"{eta_sec/3600:.1f}h" if eta_sec > 3600 else f"{eta_sec/60:.1f}m"
 
-                    log(f"Batch {batch_num}/{args.total_batches} | "
+                    log(f"Batch {batch_num}/{target_batches} | "
                         f"Loss: {avg_loss:.4f} | Student: {avg_student:.4f} | "
                         f"Distill: {avg_distill:.4f} | Time: {avg_time:.1f}s | ETA: {eta_str}", log_file)
 

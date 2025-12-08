@@ -7,29 +7,35 @@ Uses the flexible trainer with the provided teacher, labels, and images:
 - Labels pickle:     /content/drive/MyDrive/MLonMCU/Datasets/annotations/prepared_train_annotation.pkl
 - Images folder:     /content/drive/MyDrive/MLonMCU/Dataset/train2014
 
+Checkpoints are saved to and resumed from:
+- /content/drive/MyDrive/MLonMCU/Models/MAX78000/IP_8MB (default best.pth)
+
 Default device is GPU; will fall back to CPU if CUDA is unavailable.
+Mixed precision (AMP) is enabled by default on CUDA to fit larger batches.
 """
 
 import sys
-from pathlib import Path
 
 # Import the flexible trainer's main
 from train_pose_flexible import main as flexible_main
 
 
 def build_args():
+    drive_model_dir = "/content/drive/MyDrive/MLonMCU/Models/MAX78000/IP_8MB"
+    drive_best = f"{drive_model_dir}/best.pth"
     return [
         "train_pose_flexible.py",
         "--device", "gpu",
         "--teacher", "/content/drive/MyDrive/MLonMCU/Models/MAX78000/starting/checkpoint_iter_370000.pth",
         "--labels", "/content/drive/MyDrive/MLonMCU/Datasets/annotations/prepared_train_annotation.pkl",
         "--images", "/content/drive/MyDrive/MLonMCU/Datasets/train2014",
-        "--output", "pose_drive_checkpoints",
+        "--output", drive_model_dir,
+        "--checkpoint", drive_best,
         # T4-friendly defaults (adjust as needed)
         "--subset", "120000",       # use most of the dataset
-        "--batch-size", "32",       # T4 16GB should handle 128x128 inputs
+        "--batch-size", "64",       # AMP-enabled, fits better on T4 16GB
+        "--epochs", "16",           # ~30k steps with 120k subset @ 64 bs
         "--save-every", "500",      # fewer checkpoints for longer runs
-        "--total-batches", "30000", # extended training
         "--lr", "0.001",
         "--num-workers", "4",       # balanced for Colab T4
     ]
@@ -43,4 +49,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
